@@ -45,6 +45,20 @@ namespace pet_hotel.Controllers
             _context.SaveChanges();
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, PetOwner petowner) {
+            Console.WriteLine("in PUT");
+            if( id != petowner.id) {
+                return BadRequest();
+            }
+
+            _context.Update(petowner);
+            _context.SaveChanges();
+
+            return NoContent();
+
+        }
     }
 
     
