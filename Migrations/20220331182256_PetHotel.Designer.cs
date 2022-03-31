@@ -11,8 +11,8 @@ using pet_hotel.Models;
 namespace dotnet_bakery.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220330212752_CreateTablePetOwner")]
-    partial class CreateTablePetOwner
+    [Migration("20220331182256_PetHotel")]
+    partial class PetHotel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace dotnet_bakery.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("PetOwner");
+                    b.ToTable("PetOwners");
                 });
 #pragma warning restore 612, 618
         }

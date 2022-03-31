@@ -25,7 +25,12 @@ namespace pet_hotel.Controllers
             return _context.PetOwners;
         }
 
-        // [HttpPost]
+        [HttpPost]
+        public IActionResult Post(PetOwner petowner) {
+            _context.Add(petowner);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(Post), new { id = petowner.id}, petowner );
+        }
     }
 
     
