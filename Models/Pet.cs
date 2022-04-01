@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 
-namespace pet_hotel
+namespace pet_hotel.Models
 {
     public enum PetBreedType
     {
@@ -35,8 +35,9 @@ namespace pet_hotel
 
         public DateTime checkedInAt { get; set; }
 
-        [ForeignKey("petOwnerId")]
-        public int petOwnerId { get; set; }
+        [ForeignKey("ownedBy")]
+        public int ownedById { get; set; }
+        public PetOwner ownedBy { get; set; }
 
         public int id { get; set; }
 
