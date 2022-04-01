@@ -15,15 +15,20 @@ namespace pet_hotel.Controllers
     public class PetsController : ControllerBase
     {
         private readonly ApplicationContext _context;
-        public PetsController(ApplicationContext context) {
+        public PetsController(ApplicationContext context)
+        {
             _context = context;
         }
 
         // This is just a stub for GET / to prevent any weird frontend errors that 
         // occur when the route is missing in this controller
         [HttpGet]
-        public IEnumerable<Pet> GetPets() {
-            return new List<Pet>();
+        public IEnumerable<Pet> GetAll()
+        {
+            Console.WriteLine("getting all pets");
+            // return new List<PetOwner>();
+            return _context.Pets;
+                // .Include(PetOwner => PetOwner.petOwnerId);
         }
 
         // [HttpGet]
@@ -49,5 +54,14 @@ namespace pet_hotel.Controllers
 
         //     return new List<Pet>{ newPet1, newPet2};
         // }
+
+        [HttpPost]
+
+        public IActionResult Create(Pet pet)
+        {
+            _context.Add(pet);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(Create), new { id = pet.id }, pet);
+        }
     }
 }
